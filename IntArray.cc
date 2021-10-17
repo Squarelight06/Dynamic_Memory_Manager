@@ -9,6 +9,7 @@ struct IntArray {
   int *contents;                //the array.
 };
 
+//Initializes the integer array
 IntArray Initializer() {
         IntArray arr;
         arr.size = 0;
@@ -17,11 +18,13 @@ IntArray Initializer() {
         return ia;
 }
 
+//Allocates memory to a the new integer array
 void my_malloc(IntArray& arr, int n) {
         arr.capacity = n;
         arr.contents = new int[arr.capacity];
 }
 
+//Reallocates, as more memory is needed
 void my_realloc(Array& arr, int n) {
         arr.capacity = n * arr.capacity;
         int *new_Array = new int[arr.capacity];
@@ -35,9 +38,9 @@ void my_realloc(Array& arr, int n) {
         delete[] old_Array;
 }
 
+//MAIN
 void main(int argc, char *argv[]) {
         IntArray ia = Initializer();
-        int n = 0;
         if (ia.capacity == 0) {
                 istringstream ss0(argv[1]);
                 int x = 0;
@@ -50,3 +53,5 @@ void main(int argc, char *argv[]) {
                 my_realloc(ia, y);
         }
 }
+
+//NOTE: Executing this program would cause a memory leak and this is only developed for cross referencing
